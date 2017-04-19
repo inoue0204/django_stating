@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+{% load bootstrap %}
+
+{% block title %}
+{% if impression_id %}
+感想の編集
+{% else %}
+感想の追加
+{% endif %}
+{% endblock title %}
+
+{% block content %}
+{% if impression_id %}
+<h3 class="page-header">感想の編集</h3>
+<form action="{% url 'main:impression_mod' book_id=book_id impression_id=impression_id %}" method="post" class="form-horizontal" role="form">
+    {% else %}
+    <h3 class="page-header">感想の追加</h3>
+    <form action="{% url 'main:impression_add' book_id=book_id%}" method="post" class="form-horizontal" role="form">
+        {% endif %}
+        {% csrf_token %}
+        {{ form|bootstrap_horizontal }}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">送信</button>
+            </div>
+        </div>
+    </form>
+    <a href="{% url 'main:impression_list' book_id=book_id %}" class="btn btn-default btn-sm">戻る</a>
+    {% endblock content %}

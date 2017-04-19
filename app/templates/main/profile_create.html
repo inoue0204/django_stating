@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% load bootstrap %}
+
+{% block title %}ニックネームの登録{% endblock title %}
+
+{% block content %}
+<h3 class="page-header">ニックネームの登録</h3>
+<form action="{% url 'main:profile_save' %}" method="post">
+    {% csrf_token %}
+    {{ form|bootstrap_horizontal }}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">登録</button>
+        </div>
+    </div>
+</form>
+<a href="{% url 'main:profile' %}" class="btn btn-default btn-sm">戻る</a>
+{% endblock content %}

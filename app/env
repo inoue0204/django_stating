@@ -1,5 +1,5 @@
-DB_HOST=db
-DB_NAME=todo
+DB_HOST=dev_mysql
+DB_NAME=main
 DB_USERNAME=root
-DB_PASSWORD=
-DB_PORT=
+DB_PASSWORD=password
+DB_PORT=3306

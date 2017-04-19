@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% block title %}ユーザープロフィール{% endblock title %}
+{% block content %}
+<h3 class="page-header">ユーザープロフィール</h3>
+user.name : {{ user.get_username }}<hr>
+{% if profile == None %}
+<a href="{% url 'main:profile_create' %}">ニックネームを登録する</a><hr>
+{% else %}
+user.profile.nick_name : {{ profile.nick_name }}<hr>
+{% endif %}
+user.username（名前） : {{ user.username }}<hr>
+user.is_staff(/adminにログインできるか) : {{ user.is_staff }}<hr>
+user.is_active(アカウントはアクティブか、通常のログインはできるか) : {{ user.is_active }}<hr>
+user.is_superuser（すうぱあゆうざあ　ですか） : {{ user.is_superuser }}<hr>
+user.last_login(最期のログイン) : {{ user.last_login }}<hr>
+user.date_joined（アカウントの作られた日） : {{ user.date_joined }}
+{% endblock content %}
